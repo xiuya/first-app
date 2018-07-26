@@ -10,77 +10,6 @@
 <body ontouchstart="">
     <div id="wrap">
 
-        <div id="header" class="home">
-        <!-- <div id="header" class="fun"> -->
-            <!-- home，首页header -->
-            <div class="header_content home">
-                <div class="btn_left" tapmode="tap-active" onclick="openClassify();">
-
-                </div>
-                <div class="search_box" >
-                    <i class="home_icon_search" tapmode="tap-active" onclick="openCommon('search','搜索');"></i>
-                    <i class="search_voiceinput_btn" tapmode="tap-active" onclick="openSpeechRec();"></i>
-                    <span class="text" tapmode="tap-active" onclick="openCommon('search','搜索');">搜索"双11"，好货马上到手</span>
-                </div>
-
-                <div class="btn_right" tapmode="tap-active" onclick="openScanner();">
-
-                </div>
-            </div>
-            <!-- home，首页header end -->
-            <!-- featured，首页header -->
-            <div class="header_content featured">
-                <a class="btn_middle" onclick="openFeaturedFrame();" tapmode="tap-active">
-                    <span>全部</span>
-                    <i class="middle_arr down"></i>
-                </a>
-                <div class="btn_right" tapmode="tap-active" onclick="openCommon('broadcast','Laneige/兰芝')">
-                    <img src="./res/img/tm_brand_index_follow_icon.png" alt="关注" class="follow">
-                </div>
-            </div>
-            <!-- featured，首页header end -->
-            <!-- fun，首页header -->
-            <div class="header_content fun">
-                <div class="btn_left" tapmode="tap-active" onclick="openCommon('msg','消息盒子')">
-                    <img src="./res/img/tm_ic_feed_me.png" alt="范儿" class="toFun">
-                </div>
-                <a class="btn_middle">
-                    范儿
-                    <!-- <i class="middle_arr down"></i> -->
-                </a>
-                <div class="btn_right" tapmode="tap-active" onclick="openCommon('msg','消息盒子')">
-                    <img src="./res/img/tm_mytmall_icon_message.png" alt="消息" class="toMsg">
-                </div>
-                <div id="navBar_fun">
-                    <span class="navBar_btn active" onclick="jumpToFun(0);" tapmode="tap-active">
-                        推荐
-                    </span>
-                    <span class="navBar_btn" onclick="jumpToFun(1);" tapmode="tap-active">
-                        视频
-                    </span>
-                    <span class="navBar_btn" onclick="jumpToFun(2);" tapmode="tap-active">
-                        话题
-                    </span>
-                    <span class="navBar_btn" onclick="jumpToFun(3);" tapmode="tap-active">
-                        关注
-                    </span>
-                    <span class="navBar_bar">
-                        <div class="navBar_bar_inner"></div>
-                    </span>
-                </div>
-            </div>
-            <!-- fun，首页header end -->
-            <!-- cart，首页header -->
-            <div class="header_content cart">
-                <a class="btn_middle" tapmode="tap-active">
-                    购物车
-                    <!-- <i class="middle_arr down"></i> -->
-                </a>
-            </div>
-            <!-- cart，首页header end -->
-            <!-- index页5种header:::home,featured,fun,cart,profile -->
-        </div>
-
         <div id="main">
 
         </div>
@@ -115,42 +44,12 @@
     // 下方tabBar，不好用放弃，用原生写
     var aFooterList = $api.domAll('#footer_list .list_li');
     var listBar = $api.dom('#footer_list .list_bar');
-    //::::搜索框用js加上宽度，来适应屏幕尺寸
-        var searchBox = $api.dom('.home .search_box');
-        var searchBoxW = $api.offset(searchBox).w;
-        var homeIcon1W = $api.offset($api.dom(searchBox,'.home_icon_search')).w;
-        var homeIcon2W = $api.offset($api.dom(searchBox,'.search_voiceinput_btn')).w;
-        var homeSearchText = $api.dom(searchBox,'.text');
-        var homeSearchTextW = searchBoxW-homeIcon1W-homeIcon2W;
-        $api.css(homeSearchText,'width:'+homeSearchTextW+'px');
-
-    var navBarFun = $api.dom('#navBar_fun');
-    var aNavBarBtn = $api.domAll('#navBar_fun .navBar_btn');
-    var navBarBar = $api.dom('#navBar_fun .navBar_bar');
-    var setNavBarBtn = function(index){
-        $api.addCls(aNavBarBtn[index],'active');
-        navBarBar.style.webkitTransform = 'translateX('+index*100+'%)';
-        for (var i = 0; i < 4; i++) {
-            if (i != index) {
-                $api.removeCls(aNavBarBtn[i],'active');
-            }
-        }
-    };
-    var jumpToFun = function(index){
-        api.setFrameGroupIndex ({
-            name: 'fun',
-            index: index,
-            scroll: true
-        });
-    }
-    //::::搜索框js加上宽度，来适应屏幕尺寸 end
-    // tabBar切换状态，同时切换header与frame
     var frameJson = {
         '0': 'home',
         '1': 'featured',
         '2': 'fun',
         '3': 'cart',
-        '4': 'profile'
+        '4': 'zhanghu'
     };
     var changeIndexFrame = function(index){
         // header.className = frameJson[index];
@@ -291,31 +190,25 @@
             bounces: false
         });
         // 阻止首页弹动 end
-
-        window.header = $api.byId('header');
-        $api.fixStatusBar(header);
-        var headerPos = $api.offset(header);
         var main = $api.byId('main');
         var mainPos = $api.offset(main);
         var footer = $api.byId('footer');
         var footerPos = $api.offset(footer);
-
         // 切换frame
         // 打开app先设置funIndex为0；
         $api.setStorage('funIndex',0);
         window.openIndexFrames = function(index){
             var funIndex = $api.getStorage('funIndex');
             if (index == 2) {
-                var funH = $api.offset(navBarFun).h;
                 api.openFrameGroup ({
                     name: 'fun',
                     background: '#EEEEF0',
                     scrollEnabled: true,
                     rect: {
                         x: 0,
-                        y: headerPos.h + funH,
+                        y: 0,
                         w: 'auto',
-                        h: mainPos.h - funH
+                        h: mainPos.h
                     },
                     index: funIndex,
                     frames:
@@ -352,7 +245,6 @@
                     var name = ret.name;
                     var index = ret.index;
                     $api.setStorage('funIndex',index);
-                    setNavBarBtn(index);
                 });
             } else{
                 if (index == 4) {
@@ -362,9 +254,9 @@
                         bounces: true,
                         rect: {
                             x: 0,
-                            y: $api.offset(header).h,
+                            y: 0,
                             w: 'auto',
-                            h: mainPos.h + footerPos.h
+                            h: mainPos.h //+ footerPos.h
                         }
                     });
                 } else{
@@ -374,7 +266,7 @@
                         bounces: true,
                         rect: {
                             x: 0,
-                            y: headerPos.h,
+                            y: 0,
                             w: 'auto',
                             h: mainPos.h
                         }

@@ -18,7 +18,7 @@
             script: 'indexToDetail("'+title+'","'+url+'")'
         });
     };
-// 
+//
 // 打开分类列表
     var openClassify = function(){
         api.execScript({
@@ -26,7 +26,7 @@
             script: 'indexOpenClassify()'
         });
     };
-// 
+//
 // 语音识别
     var openSpeechRec = function(){
         api.execScript({
@@ -34,7 +34,7 @@
             script: 'indexOpenSpeechRec()'
         });
     };
-// 
+//
 // 二维码
     var openScanner = function(){
         api.execScript({
@@ -42,7 +42,7 @@
             script: 'indexOpenScanner()'
         });
     };
-// 
+//
 // 通用header的window
     var openCommon = function(name,title){
 
@@ -51,7 +51,7 @@
             script: 'indexOpenCommon("'+name+'","'+title+'")'
         });
     }
-// 
+//
 // 打开分享浮动窗口
     var openShareframe = function(){
 
@@ -60,7 +60,7 @@
             script: 'indexOpenShareframe()'
         });
     }
-// 
+//
 // 请先登录提示
     var showToast = function(){
         api.toast({
@@ -70,7 +70,7 @@
         });
     };
 
-// 
+//
 // // fun进入topic详细页
 //     var funToTopic = function(){
 //         // arguments
@@ -86,4 +86,4 @@
 //             }
 //         });
 //     };
-// // 
+// //

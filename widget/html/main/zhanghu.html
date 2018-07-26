@@ -1,0 +1,174 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>APP</title>
+    <link rel="stylesheet" type="text/css" href="../../css/api.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/common.css" />
+    <style>
+
+        #main{
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            display: block;
+            position: relative;
+        }
+        #navBar_fun{
+          display: inline-block;
+          color: #FFF;
+          line-height: 48px;
+          height: 48px;
+          width: 100%;
+          position:absolute;
+          bottom: 0;
+        }
+        .navInnerBar{
+            display: block;
+            width: 85%;
+            height: 100%;
+            margin: 0 auto;
+            background-color: #C50000;
+        }
+        .navbar-shadow{
+            width: 100%;
+            display: block;
+            position: relative;
+            height: 48px;
+        }
+        #navBar_fun .navBar_btn{
+          width: 20%;
+          font-size: 14px;
+          line-height:20px;
+          text-align: center;
+          padding: 4px 0;
+        }
+        #navBar_fun .navBar_btn.doublelh{
+          line-height: 48px;
+        }
+        #navBar_fun .navBar_bar{
+          width: 20%;
+          height: 2px;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div id="main">
+        </div>
+        <div class="navbar-shadow">
+              <div id="navBar_fun">
+                  <span class="navBar_btn active doublelh" onclick="jumpToBC(0);" tapmode="tap-active">
+                      预览
+                  </span>
+                  <span class="navBar_btn" onclick="jumpToBC(1);" tapmode="tap-active">
+                      编辑<br/>企业详情
+                  </span>
+                  <span class="navBar_btn" onclick="jumpToBC(2);" tapmode="tap-active">
+                      编辑<br/>企业简介
+                  </span>
+                  <span class="navBar_btn" onclick="jumpToBC(3);" tapmode="tap-active">
+                      编辑<br/>个人资料
+                  </span>
+                  <span class="navBar_btn doublelh" onclick="jumpToBC(4);" tapmode="tap-active">
+                      统计
+                  </span>
+                  <span class="navBar_bar">
+                      <span class="navInnerBar"></span>
+                  </span>
+              </div>
+      </div>
+    </div>
+</body>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/common.js"></script>
+<script type="text/javascript">
+    var navBarFun = $api.dom('#navBar_fun');
+    var funH = $api.offset(navBarFun).h;
+    var aNavBarBtn = $api.domAll('#navBar_fun .navBar_btn');
+    var navBarBar = $api.dom('#navBar_fun .navBar_bar');
+    var setNavBarBtn = function(index){
+        $api.addCls(aNavBarBtn[index],'active');
+        navBarBar.style.webkitTransform = 'translateX('+index*100+'%)';
+        for (var i = 0; i < 5; i++) {
+            if (i != index) {
+                $api.removeCls(aNavBarBtn[i],'active');
+            }
+        }
+    };
+
+    var jumpToBC = function(index){
+        api.setFrameGroupIndex ({
+            name: 'bbc',
+            index: index,
+            scroll: true
+        });
+    }
+    apiready = function(){
+      var main = $api.byId('main');
+      var mainPos = $api.offset(main);
+        api.openFrameGroup ({
+            name: 'bbc',
+            background: '#EEEEF0',
+            scrollEnabled: true,
+            rect: {
+                x: 0,
+                y:0,
+                w: 'auto',
+                h: mainPos.h
+            },
+            index: 0,
+            frames:
+            [{
+                name: 'zhanghu-con1',
+                url: './zhanghu-con1.html',
+                pageParam:{},
+                bounces:true,
+                opaque:true,
+                bgColor: '#EEEEF0'
+            },{
+                name: 'zhanghu-con2',
+                url: './zhanghu-con2.html',
+                pageParam:{},
+                bounces:true,
+                opaque:true,
+                bgColor: '#EEEEF0'
+            },{
+                name: 'zhanghu-con3',
+                url: './zhanghu-con3.html',
+                pageParam:{},
+                bounces:true,
+                opaque:true,
+                bgColor: '#EEEEF0'
+            },{
+                name: 'zhanghu-con4',
+                url: './zhanghu-con4.html',
+                pageParam:{},
+                bounces:true,
+                opaque:true,
+                bgColor: '#EEEEF0'
+            },{
+                name: 'zhanghu-con5',
+                url: './zhanghu-con5.html',
+                pageParam:{},
+                bounces:true,
+                opaque:true,
+                bgColor: '#EEEEF0'
+          },{
+              name: 'zhanghu-con6',
+              url: './zhanghu-con4.html',
+              pageParam:{},
+              bounces:true,
+              opaque:true,
+              bgColor: '#EEEEF0'
+          }]
+        }, function(ret, err){
+            var name = ret.name;
+            var index = ret.index;
+            setNavBarBtn(index);
+        });
+    }
+</script>
+</html>

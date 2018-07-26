@@ -54,11 +54,12 @@
             background: #7F0000 url(../../res/img/webview_dividing.png) left center no-repeat;
             background-size: 1px 100%;
         }
-        
+
         .navbar-shadow{
             width: 100%;
             display: block;
             position: relative;
+            height: 48px;
         }
         .navInnerBar{
             display: block;
@@ -71,12 +72,11 @@
 </head>
 <body>
     <div id="wrap">
-        <div id="header">
-            <div class="btn_box pull-left" tapmode="tap-active" onclick="api.closeWin();">
+            <!-- <div class="btn_box pull-left" tapmode="tap-active" onclick="api.closeWin();">
                 <img src="../../res/img/tmall_btn_bar_back.png" alt="">
-            </div>
-            <h5></h5>
-            <div class="navbar-shadow">
+            </div> -->
+            <!-- <h5></h5> -->
+          <div class="navbar-shadow">
                 <div id="navBar_fun">
                     <span class="navBar_btn active" onclick="jumpToBC(0);" tapmode="tap-active">
                         新品
@@ -94,10 +94,9 @@
                         <span class="navInnerBar"></span>
                     </span>
                 </div>
-            </div>
-            
         </div>
-        <div id="main"> 
+
+        <div id="main">
 
         </div>
 
@@ -106,7 +105,7 @@
 <script type="text/javascript" src="../../script/api.js"></script>
 <script type="text/javascript" src="../../script/common.js"></script>
 <script type="text/javascript">
-    
+
     var navBarFun = $api.dom('#navBar_fun');
     var funH = $api.offset(navBarFun).h;
     var aNavBarBtn = $api.domAll('#navBar_fun .navBar_btn');
@@ -117,7 +116,7 @@
         for (var i = 0; i < 4; i++) {
             if (i != index) {
                 $api.removeCls(aNavBarBtn[i],'active');
-            }   
+            }
         }
     };
     var jumpToBC = function(index){
@@ -128,52 +127,52 @@
         });
     }
     apiready = function(){
-        var header = $api.byId('header');
-        $api.fixStatusBar(header); 
-        var headerPos = $api.offset(header);
+        // var header = $api.byId('header');
+        // $api.fixStatusBar(header);
+        // var headerPos = $api.offset(header);
         var main = $api.byId('main');
         var mainPos = $api.offset(main);
-        var name = api.pageParam.name;
-        var title = api.pageParam.title;
-        $api.dom('#header h5').innerHTML = title;
+        // var name = api.pageParam.name;
+        // var title = api.pageParam.title;
+        // $api.dom('#header h5').innerHTML = title;
         api.openFrameGroup ({
             name: 'bbc',
             background: '#EEEEF0',
             scrollEnabled: true,
             rect: {
                 x: 0,
-                y: headerPos.h + funH,
+                y:  funH,
                 w: 'auto',
                 h: mainPos.h - funH
             },
             index: 0,
             frames:
             [{
-                name: 'broadcast-con1', 
-                url: './broadcast-con1.html', 
-                pageParam:{}, 
-                bounces:true, 
+                name: 'broadcast-con1',
+                url: './broadcast-con1.html',
+                pageParam:{},
+                bounces:true,
                 opaque:true,
                 bgColor: '#EEEEF0'
             },{
-                name: 'broadcast-con2', 
+                name: 'broadcast-con2',
                 url: './broadcast-con2.html',
-                pageParam:{}, 
-                bounces:true, 
+                pageParam:{},
+                bounces:true,
                 opaque:true,
                 bgColor: '#EEEEF0'
             },{
-                name: 'broadcast-con3', 
+                name: 'broadcast-con3',
                 url: './broadcast-con3.html',
-                pageParam:{}, 
-                bounces:true, 
+                pageParam:{},
+                bounces:true,
                 opaque:true,
                 bgColor: '#EEEEF0'
             },{
-                name: 'broadcast-con4', 
+                name: 'broadcast-con4',
                 url: './broadcast-con4.html',
-                pageParam:{}, 
-                bounces:true, 
+                pageParam:{},
+                bounces:true,
                 opaque:true,
                 bgColor: '#EEEEF0'
             }]
@@ -181,7 +180,7 @@
             var name = ret.name;
             var index = ret.index;
             setNavBarBtn(index);
-        });  
+        });
     }
 </script>
 </html>

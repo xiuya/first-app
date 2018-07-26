@@ -1,4 +1,5 @@
 <!doctype html>
+<!doctype html>
 <html>
 <head>
     <meta charset="utf-8">
@@ -301,38 +302,7 @@
         margin-bottom: 8px;
     }
     /*.wraphome{position: relative;}*/
-    .homefooter_wrap{position:fixed;width: 100%;display: none; left: 0;bottom:0;right：0;color: #848C98;z-index:10;overflow-y:scroll;
-      font-size: 16px;height: 50px; line-height: 50px;background: url(../../res/img/tmall_bottom_bg.9.png) left bottom repeat-x;background-size: 11px 50px;background-color: #81a9c3;width: 100%;text-align: center;}
-      .homefooter-wrap>#homefooter{position: relative;display: block;height: 50px; line-height: 50px;background: url(../../res/img/tmall_bottom_bg.9.png) left bottom repeat-x;background-size: 11px 50px;background-color: #81a9c3;text-align: center;}
-    #homefooter .list_li.active .text{color: #444F59;}
-    #homefooter .list_li{
-        float: left;
-        height: 50px;
-        width: 20%;
-        position: relative;
-    }
-    #homefooter .list_bar{
-        position: absolute;
-        bottom: 0;
-        left: 0%;
-        height: 2px;
-        width: 20%;
-        -webkit-transform: translateX(0%);
-                transform: translateX(0%);
-        -webkit-transition: all .25s ease;
-                transition: all .25s ease;
 
-    }
-    #homefooter .list_bar .list_bar_inner{
-        position: absolute;
-        width: 50%;
-        height: 100%;
-        top: 0;
-        left: 50%;
-        background-color: #C50000;
-        -webkit-transform: translateX(-50%);
-                transform: translateX(-50%);
-    }
 /*更多惊喜 end*/
 /* home页具体内容 end */
 
@@ -685,25 +655,25 @@
 
 <div class="homefooter_wrap">
     <ul class="homefooter clearfix" id="homefooter">
-      <li class="list_li  active sp1_4" onclick="changeIndexFrame(0);" tapmode="tap-active">
+      <li class="list_li  active sp1_4"  tapmode="tap-active">
           <span class="text ">家用电器</span>
       </li>
-      <li class="list_li sp1_4" onclick="changeIndexFrame(1);" tapmode="tap-active">
+      <li class="list_li sp1_4"  tapmode="tap-active">
           <span class="text ">医疗保健</span>
       </li>
-      <li class="list_li sp1_4" onclick="changeIndexFrame(2);" tapmode="tap-active">
+      <li class="list_li sp1_4"  tapmode="tap-active">
           <span class="text">数码电子</span>
       </li>
-      <li class="list_li sp1_4" onclick="changeIndexFrame(3);" tapmode="tap-active">
+      <li class="list_li sp1_4" tapmode="tap-active">
           <span class="text">户外运动</span>
       </li>
-      <li class="list_li sp1_4" onclick="changeIndexFrame(4);" tapmode="tap-active">
+      <li class="list_li sp1_4" tapmode="tap-active">
           <span class="text">箱包配置</span>
       </li>
-      <li class="list_li sp1_4" onclick="changeIndexFrame(4);" tapmode="tap-active">
+      <li class="list_li sp1_4" tapmode="tap-active">
           <span class="text">箱包配置</span>
       </li>
-      <li class="list_li sp1_4" onclick="changeIndexFrame(4);" tapmode="tap-active">
+      <li class="list_li sp1_4"  tapmode="tap-active">
           <span class="text">箱包配置</span>
       </li>
       <li class="list_bar">
@@ -731,6 +701,7 @@
 <script type="text/javascript" src="../../script/zepto.js"></script>
 <script type="text/javascript" src="../../script/swipe.js"></script>
 <script type="text/javascript" src="../../script/common.js"></script>
+:<script type="text/javascript" src="../../script/scroll.js"></script>
 <script type="text/javascript">
     apiready = function(){
         Zepto(function($){
@@ -830,54 +801,7 @@
     // apiready();
 </script>
 <script type="text/javascript">
-function scrollDirect(fn) {
-    var beforeScrollTop = document.body.scrollTop;
-    fn = fn || function () {
-    };
-    window.addEventListener("scroll", function (event) {
-        event = event || window.event;
-        var afterScrollTop = document.body.scrollTop;
-        delta = afterScrollTop - beforeScrollTop;
-        // alert(delta)
-        beforeScrollTop = afterScrollTop;
-        var scrollTop = $(this).scrollTop();
-        var scrollHeight = $(document).height();
-        var windowHeight = $(this).height();
-        if (scrollTop + windowHeight > scrollHeight - 10) {  //滚动到底部执行事件
-            fn('up');
-            return;
-        }
-        if (afterScrollTop < 10 || afterScrollTop > $(document.body).height - 10) {
-            fn('up');
-        } else {
-            if (Math.abs(delta) < 10) {
-                return false;
-            }
-            fn(delta > 0 ? "down" : "up");
-        }
-    }, false);
-};
-var upflag=1;
-var  downflag= 1;
-   //scroll滑动,上滑和下滑只执行一次！
-scrollDirect(function (direction) {
-       if (direction == "down") {
-           if (downflag) {
-              //  alert("我在下滑")
-               $(".homefooter_wrap").css('display','none');
-               downflag = 0;
-                upflag = 1;
-           }
-       }
-       if (direction == "up") {
-           if (upflag) {
-              //  alert("我在上滑")
-               $(".homefooter_wrap").css('display','block');
-              downflag = 1;
-               upflag = 0;
-           }
-       }
-});
+
 
 var aFooterList = $api.domAll('#homefooter .list_li');
 var listBar = $api.dom('#homefooter .list_bar');
@@ -886,7 +810,7 @@ var frameJson = {
     '1': 'featured',
     '2': 'fun',
     '3': 'cart',
-    '4': 'profile'
+    '4': 'zhanghu'
 };
 var changeIndexFrame = function(index){
     // header.className = frameJson[index];
@@ -898,7 +822,7 @@ var changeIndexFrame = function(index){
         }
     };
     listBar.style.webkitTransform = 'translateX('+index*100+'%)';
-    // openIndexFrames(index);、
+    openIndexFrames(index);
 };
 </script>
 </html>
