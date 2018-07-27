@@ -13,6 +13,7 @@ html, body {
     flex-flow: column;
 }
 
+
 /*#header {
     text-align: center;
     background-color: #323232;
@@ -729,8 +730,37 @@ textarea:focus, input:focus {
     -webkit-transform: translateX(-50%);
     transform: translateX(-50%);
 }
+
+
 /*底部导航 end*/
+
+
 /*账户css*/
-.bc-box .title{font-size: 18px;line-height: 40px;text-align: center;}
-.baocun{width: 100%;margin-top: 15px;height: 30px;display: block;overflow: hidden;}
-.baocun  input{float: right;display: block;border-radius: 4px;height: 30px;width: 150px;line-height: 30px;background: #BE3030;color: #fff;text-align: center;}
+
+.bc-box .title {
+    font-size: 18px;
+    line-height: 40px;
+    text-align: center;
+}
+
+.baocun {
+    width: 100%;
+    margin-top: 15px;
+    height: 30px;
+    display: block;
+    overflow: hidden;
+}
+
+.baocun input {
+    width: 50px;
+    padding: .5em;
+    float: right;
+    display: block;
+    border-radius: 4px;
+    line-height: 1.2em;
+    background: #BE3030;
+    color: #fff;
+    text-align: center;
+    font-size: .6em;
+    padding: .3em;
+}
