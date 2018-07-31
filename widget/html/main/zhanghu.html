@@ -6,54 +6,7 @@
     <title>APP</title>
     <link rel="stylesheet" type="text/css" href="../../css/api.css" />
     <link rel="stylesheet" type="text/css" href="../../css/common.css" />
-    <style>
 
-        #main{
-            padding: 0;
-            height: 100%;
-            width: 100%;
-            display: block;
-            position: relative;
-        }
-        #navBar_fun{
-          display: inline-block;
-          color: #FFF;
-          line-height: 48px;
-          height: 48px;
-          width: 100%;
-          position:absolute;
-          bottom: 0;
-        }
-        .navInnerBar{
-            display: block;
-            width: 85%;
-            height: 100%;
-            margin: 0 auto;
-            background-color: #C50000;
-        }
-        .navbar-shadow{
-            width: 100%;
-            display: block;
-            position: relative;
-            height: 48px;
-        }
-        #navBar_fun .navBar_btn{
-          width: 20%;
-          font-size: 14px;
-          line-height:20px;
-          text-align: center;
-          padding: 3px 0;
-          height: 40px;
-        }
-        #navBar_fun .navBar_btn.doublelh{
-          line-height: 48px;
-        }
-        #navBar_fun .navBar_bar{
-          width: 20%;
-          height: 2px;
-        }
-
-    </style>
 </head>
 <body>
     <div id="wrap">
@@ -80,7 +33,7 @@
                       <span class="navInnerBar"></span>
                   </span>
               </div>
-      </div>
+        </div>
     </div>
 </body>
 <script type="text/javascript" src="../../script/api.js"></script>
@@ -110,17 +63,19 @@
     apiready = function(){
       var main = $api.byId('main');
       var mainPos = $api.offset(main);
+      $api.setStorage('zhIndex',0);
+      var zhIndex = $api.getStorage('zhIndex');
         api.openFrameGroup ({
             name: 'bbc',
             background: '#EEEEF0',
             scrollEnabled: true,
             rect: {
                 x: 0,
-                y:0,
+                y: 0,
                 w: 'auto',
                 h: mainPos.h
             },
-            index: 0,
+            index: zhIndex,
             frames:
             [{
                 name: 'zhanghu-con1',
@@ -161,6 +116,7 @@
         }, function(ret, err){
             var name = ret.name;
             var index = ret.index;
+            $api.setStorage('zhIndex',index);
             setNavBarBtn(index);
         });
     }

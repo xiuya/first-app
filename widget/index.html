@@ -42,6 +42,7 @@
 <script type="text/javascript" src="./script/common.js"></script>
 <script type="text/javascript">
     // 下方tabBar，不好用放弃，用原生写
+
     var aFooterList = $api.domAll('#footer_list .list_li');
     var listBar = $api.dom('#footer_list .list_bar');
     var frameJson = {
@@ -79,6 +80,10 @@
                 w: 'auto',
                 h: 'auto'
             }
+        });
+        api.setStatusBarStyle({
+          style:'dark',
+          color:"#6ab494"
         });
     };
 
@@ -147,7 +152,6 @@
     // 二维码 end
     // 通用header的window
     var indexOpenCommon = function(name,title){
-
         api.openWin({
             name: name,
             url: './html/detailframes/'+name+'.html',
@@ -162,7 +166,23 @@
                 h: 'auto'
             }
         });
-    }
+    };
+    var indexWrapOpenCommon = function(name,title){
+        api.openWin({
+            name: name,
+            url: './html/main/'+name+'.html',
+            pageParam: {
+                name: name,
+                title: title
+            },
+            rect: {
+                x: 0,
+                y: 0,
+                w: 'auto',
+                h: 'auto'
+            }
+        });
+    };
     // 通用header的window end
     // 打开分享浮动窗口
     var indexOpenShareframe = function(){
@@ -182,7 +202,13 @@
         });
     };
     // 打开分享浮动窗口 end
-
+    var jumpToBC = function(index){
+        api.setFrameGroupIndex ({
+            name: 'bbc',
+            index: index,
+            scroll: true
+        });
+    };
     apiready = function(){
 
         // 阻止首页弹动
@@ -257,7 +283,11 @@
                             y: 0,
                             w: 'auto',
                             h: mainPos.h //+ footerPos.h
-                        }
+                        },
+                    });
+                    api.execScript({
+                        name: 'root',
+                        script: 'jumpToBC(0)'
                     });
                 } else{
                     api.openFrame({

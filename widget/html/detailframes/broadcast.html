@@ -5,7 +5,7 @@
     <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
     <title>APP</title>
     <link rel="stylesheet" type="text/css" href="../../css/api.css" />
-    <link rel="stylesheet" type="text/css" href="../../css/common.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/common0.css" />
     <style>
         #header{
             text-align: center;
@@ -59,7 +59,6 @@
             width: 100%;
             display: block;
             position: relative;
-            height: 48px;
         }
         .navInnerBar{
             display: block;
@@ -72,34 +71,39 @@
 </head>
 <body>
     <div id="wrap">
-            <!-- <div class="btn_box pull-left" tapmode="tap-active" onclick="api.closeWin();">
+        <div id="header">
+            <div class="btn_box pull-left" tapmode="tap-active" onclick="api.closeWin();">
                 <img src="../../res/img/tmall_btn_bar_back.png" alt="">
-            </div> -->
-            <!-- <h5></h5> -->
-          <div class="navbar-shadow">
-                <div id="navBar_fun">
-                    <span class="navBar_btn active" onclick="jumpToBC(0);" tapmode="tap-active">
-                        新品
-                    </span>
-                    <span class="navBar_btn" onclick="jumpToBC(1);" tapmode="tap-active">
-                        优惠
-                    </span>
-                    <span class="navBar_btn" onclick="jumpToBC(2);" tapmode="tap-active">
-                        专享
-                    </span>
-                    <span class="navBar_btn" onclick="jumpToBC(3);" tapmode="tap-active">
-                        专题
-                    </span>
-                    <span class="navBar_bar">
-                        <span class="navInnerBar"></span>
-                    </span>
-                </div>
-        </div>
+            </div>
+            <h5></h5>
 
+
+        </div>
         <div id="main">
 
         </div>
-
+        <div class="navbar-shadow">
+            <div id="navBar_fun">
+                <span class="navBar_btn active" onclick="jumpToBC(0);" tapmode="tap-active">
+                      卖家信息
+                </span>
+                <span class="navBar_btn" onclick="jumpToBC(1);" tapmode="tap-active">
+                    规格参数
+                </span>
+                <span class="navBar_btn" onclick="jumpToBC(2);" tapmode="tap-active">
+                    图文详情
+                </span>
+                <span class="navBar_btn" onclick="jumpToBC(3);" tapmode="tap-active">
+                    收藏
+                </span>
+                <span class="navBar_btn" onclick="jumpToBC(4);" tapmode="tap-active">
+                    购买
+                </span>
+                <span class="navBar_bar">
+                    <span class="navInnerBar"></span>
+                </span>
+            </div>
+        </div>
     </div>
 </body>
 <script type="text/javascript" src="../../script/api.js"></script>
@@ -113,7 +117,7 @@
     var setNavBarBtn = function(index){
         $api.addCls(aNavBarBtn[index],'active');
         navBarBar.style.webkitTransform = 'translateX('+index*100+'%)';
-        for (var i = 0; i < 4; i++) {
+        for (var i = 0; i < 5; i++) {
             if (i != index) {
                 $api.removeCls(aNavBarBtn[i],'active');
             }
@@ -127,21 +131,21 @@
         });
     }
     apiready = function(){
-        // var header = $api.byId('header');
-        // $api.fixStatusBar(header);
-        // var headerPos = $api.offset(header);
+        var header = $api.byId('header');
+        $api.fixStatusBar(header);
+        var headerPos = $api.offset(header);
         var main = $api.byId('main');
         var mainPos = $api.offset(main);
-        // var name = api.pageParam.name;
-        // var title = api.pageParam.title;
-        // $api.dom('#header h5').innerHTML = title;
+        var name = api.pageParam.name;
+        var title = api.pageParam.title;
+        $api.dom('#header h5').innerHTML = title;
         api.openFrameGroup ({
             name: 'bbc',
             background: '#EEEEF0',
             scrollEnabled: true,
             rect: {
                 x: 0,
-                y:  funH,
+                y: headerPos.h ,
                 w: 'auto',
                 h: mainPos.h - funH
             },
@@ -171,6 +175,13 @@
             },{
                 name: 'broadcast-con4',
                 url: './broadcast-con4.html',
+                pageParam:{},
+                bounces:true,
+                opaque:true,
+                bgColor: '#EEEEF0'
+            },{
+                name: 'broadcast-con5',
+                url: './broadcast-con5.html',
                 pageParam:{},
                 bounces:true,
                 opaque:true,

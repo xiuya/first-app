@@ -7,80 +7,6 @@
     <title>APP</title>
     <link rel="stylesheet" type="text/css" href="../../css/api.css" />
     <link rel="stylesheet" type="text/css" href="../../css/common.css" />
-    <style>
-        body,
-        html {
-            background: transparent;
-        }
-
-        #wrap {
-            background-color: #C8C8C8;
-            display: block;
-        }
-
-        #main {
-            padding: 0.75em;
-            position: relative;
-            background-color: #C8C8C8;
-        }
-
-        .bc-box {
-            border: 1px solid #CCC;
-            background-color: #FFF;
-        }
-
-        .bc-box img {
-            display: block;
-            width: 100%;
-        }
-
-        .bc-box-bottom {
-            /*height: 56px;*/
-        }
-
-        .bc-box-bottom .price {
-            width: 20%;
-            font-size: 0.6em;
-            height: 28px;
-            line-height: 28px;
-            text-align: center;
-            color: #C70000;
-        }
-
-        .bc-box-bottom .right-text {
-            width: 80%;
-            font-size: 0.6em;
-            height: 28px;
-            line-height: 28px;
-        }
-
-        .bc-box-bottom .right-text input {
-            border-bottom: 1px solid #eee;
-            width: 100%;
-        }
-
-        .bc-box-bottom .right-text span {
-            text-indent: 0.7em;
-            width: 100%;
-            text-overflow: ellipsis;
-            overflow: hidden;
-            white-space: nowrap;
-            height: 28px;
-        }
-
-        .bc-box-bottom .right-text .des {
-            font-size: 0.7em;
-            line-height: 40px;
-            color: #333333;
-        }
-
-        .bc-box-bottom .right-text .date {
-            text-indent: 0.9em;
-            font-size: 0.5em;
-            line-height: 18px;
-            color: #9A9A9A;
-        }
-    </style>
 </head>
 
 <body>
@@ -96,9 +22,9 @@
                 </div>
                 <div class="bc-box-bottom clearfix">
                     <span class="pull-left price">性别:</span>
-                    <div class="pull-left right-text">
-                        先生<input type="radio" checked> 女士
-                        <input type="radio" checked>
+                    <div class="pull-left right-text clearfix " style="">
+                      <div class="pull-left" style="width:50%;">先生<input type="radio" checked name="people"> </div>
+                      <div class="pull-left"  style="width:50%;">女士<input type="radio" name="people"> </div>
                     </div>
                 </div>
                 <div class="bc-box-bottom clearfix">
@@ -139,8 +65,9 @@
                         <input type="text">
                     </div>
                 </div>
+                  <div class="baocun "><input type="text" value="保存" class="button "></div>
+
             </div>
-            <div class="baocun"><input type="text" value="保存" class="button"></div>
         </div>
     </div>
 </body>

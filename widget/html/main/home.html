@@ -1,5 +1,4 @@
 <!doctype html>
-<!doctype html>
 <html>
 
 <head>
@@ -78,7 +77,7 @@
             padding-top: 1em;
             background-color: #FFFFFF;
         }
-        .container{padding-top: 130px;}
+        .container{padding-top: 180px;}
         .container .title {
             text-indent: 13px;
             color: #58616D;
@@ -356,6 +355,84 @@
         /*.wraphome{position: relative;}*/
         /*更多惊喜 end*/
         /* home页具体内容 end */
+
+        /*底部导航 start*/
+
+        .homefooter_wrap {
+            position:fixed;
+            left: 0;
+            bottom: 0;
+            color: #848C98;
+            z-index:50;
+            font-size: 16px;
+            height: 40px;
+            line-height: 40px;
+            background: url(../../res/img/tmall_bottom_bg.9.png) left bottom repeat-x;
+            background-size: 11px 50px;
+            width: 100%;
+            text-align: center;
+            overflow-x: scroll;
+            overflow-y: hidden;
+            padding: 0;
+            display: none;
+        }
+
+        .homefooter_wrap>#homefooter {
+            position: relative;
+            display: block;
+            height: 40px;
+            line-height: 40px;
+            /*background: url(../../res/img/tmall_bottom_bg.9.png) left bottom repeat-x;*/
+            background-size: 11px 50px;
+            text-align: center;
+            background-color: #eeeef0;
+            width:800px;
+            padding: 0;
+            margin: 0;
+        }
+
+        #homefooter .list_li.active .text {
+            color: #444f59;
+        }
+
+        #homefooter .list_li {
+            float: left;
+            height: 100%;
+            width:80px;
+            text-align: center;
+            display: block;
+            font-size: 14px;
+        }
+        #homefooter .list_li .text{
+          width:80px;
+          text-align: center;
+          height: 100%;
+        }
+
+        #homefooter .list_bar {
+            position: absolute;
+            bottom: 0;
+            left: 0%;
+            height: 2px;
+            width:80px;
+            -webkit-transform: translateX(0%);
+            transform: translateX(0%);
+            -webkit-transition: all .25s ease;
+            transition: all .25s ease;
+        }
+
+        #homefooter .list_bar .list_bar_inner {
+            position: absolute;
+            width: 40px;
+            height: 100%;
+            top: 0;
+            left: 50%;
+            background-color: #C50000;
+            -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+        }
+
+        /*底部导航 end*/
     </style>
 </head>
 
@@ -363,22 +440,22 @@
     <div id="wrap wraphome">
         <div id="main">
             <!-- 轮播图 -->
-            <div id='slider' class='swipe'>
+            <div id='slider' class='swipe' >
                 <div class='swipe-wrap'>
-                    <div class="swipe-box" tapmode="tap-active" onclick="toDetail(this);">
+                    <div class="swipe-box" tapmode="tap-active" onclick="openCommon('broadcast','全球知名大牌特卖汇')">
                         <!-- data-url="http://h5.m.taobao.com/channel/act/other/newbook.php" data-title="新书" -->
                         <img src="../../image/index_ad_1.jpg" alt="全球知名大牌特卖汇">
                     </div>
-                    <div class="swipe-box" tapmode="tap-active">
+                    <div class="swipe-box" tapmode="tap-active" onclick="openCommon('broadcast','君御灯饰特惠日！')">
                         <img src="../../image/index_ad_2.jpg" alt="君御灯饰特惠日！">
                     </div>
-                    <div class="swipe-box" tapmode="tap-active">
+                    <div class="swipe-box" tapmode="tap-active" onclick="openCommon('broadcast','宇宙最萌面膜专场')">
                         <img src="../../image/index_ad_3.jpg" alt="宇宙最萌面膜专场">
                     </div>
-                    <div class="swipe-box" tapmode="tap-active">
+                    <div class="swipe-box" tapmode="tap-active"  onclick="openCommon('broadcast','狂欢延续，999送黄金')">
                         <img src="../../image/index_ad_4.jpg" alt="狂欢延续，999送黄金">
                     </div>
-                    <div class="swipe-box" tapmode="tap-active">
+                    <div class="swipe-box" tapmode="tap-active" onclick="openCommon('broadcast','儿童户外运动一站购')">
                         <img src="../../image/index_ad_5.jpg" alt="儿童户外运动一站购">
                     </div>
                 </div>
@@ -398,14 +475,14 @@
             <!-- 轮播图 end -->
 
             <!-- 下方详情 -->
-            <div class="container">
-                <div class="headlines sp1_3" tapmode="tap-active">
-                    <span class="title">天猫头条</span>
+            <div class="container" style="margin-top:0.75em;">
+                <div class="headlines sp1_3" tapmode="tap-active"   onclick="openCommon('broadcast','购物头条')">
+                    <span class="title">购物头条</span>
                     <span class="brief">娇俏女</span>
                     <img src="../../image/index_img_headlines.png" alt="">
                 </div>
                 <div class="brand sp2_3">
-                    <div class="brand_left" tapmode="tap-active">
+                    <div class="brand_left"  tapmode="tap-active" onclick="openCommon('broadcast','品牌街')">
                         <span class="title">品牌街</span>
                         <span class="brief">怀念书写的乐趣</span>
                         <img src="../../image/index_img_brand.png" alt="">
@@ -414,14 +491,14 @@
                         <span class="title">&nbsp;</span>
                         <span class="brief">我关注的才是大牌</span>
                         <div class="img_box">
-                            <img src="../../image/index_brand_logo_1.png" alt="" tapmode="tap-active">
-                            <img src="../../image/index_brand_logo_2.png" alt="" tapmode="tap-active">
-                            <img src="../../image/index_brand_logo_3.png" alt="" tapmode="tap-active">
-                            <img src="../../image/index_brand_logo_4.png" alt="" tapmode="tap-active">
+                            <img src="../../image/index_brand_logo_1.png" alt="" tapmode="tap-active" onclick="openCommon('broadcast','品牌街')">
+                            <img src="../../image/index_brand_logo_2.png" alt="" tapmode="tap-active" onclick="openCommon('broadcast','品牌街')">
+                            <img src="../../image/index_brand_logo_3.png" alt="" tapmode="tap-active" onclick="openCommon('broadcast','品牌街')">
+                            <img src="../../image/index_brand_logo_4.png" alt="" tapmode="tap-active" onclick="openCommon('broadcast','品牌街')">
                         </div>
                     </div>
                 </div>
-                <div class="count_down sp1" tapmode="tap-active">
+                <div class="count_down sp1"  tapmode="tap-active" onclick="openCommon('broadcast','喵一眼')">
                     <div class="left">
                         <span class="title">喵一眼</span>
                         <span class="brief">精选商品限时抢购</span>
@@ -446,42 +523,43 @@
                 </div>
                 <div class="venue_big_box sp1">
                     <div class="venue_big_inner clearfix">
-                        <div class="venue_big sp1_3_big v1" tapmode="tap-active">
+                        <div class="venue_big sp1_3_big v1" tapmode="tap-active" >
                             <span class="title">我的衣橱</span>
                             <span class="brief">私人时尚衣橱</span>
-                            <img src="../../image/index_img_p5.png" alt="">
+                            <img src="../../image/index_img_p5.png" alt=""  >
                         </div>
-                        <div class="venue_big sp1_3_big" tapmode="tap-active">
+                        <div class="venue_big sp1_3_big" tapmode="tap-active" >
                             <span class="title">专属试用</span>
                             <span class="brief">只属于你的试用</span>
                             <img src="../../image/index_img_p6.png" alt="">
                         </div>
-                        <div class="venue_big sp1_3_big" tapmode="tap-active">
+                        <div class="venue_big sp1_3_big" tapmode="tap-active" >
                             <span class="title">穿戴Style</span>
                             <span class="brief">我的搭配经</span>
                             <img src="../../image/index_img_p7.png" alt="">
                         </div>
                     </div>
-                </div>
-                <div class="venue sp1_3" tapmode="tap-active">
-                    <span class="title">建材会场</span>
-                    <span class="brief">3年质保</span>
-                    <img src="../../image/index_img_p1.png" alt="">
-                </div>
-                <div class="venue sp1_3" tapmode="tap-active">
-                    <span class="title">居家会场</span>
-                    <span class="brief">我的梦想家</span>
-                    <img src="../../image/index_img_p2.png" alt="">
-                </div>
-                <div class="venue sp1_3" tapmode="tap-active">
-                    <span class="title">喵鲜生</span>
-                    <span class="brief">双11生鲜抄底</span>
-                    <img src="../../image/index_img_p3.png" alt="">
-                </div>
-                <img src="../../image/index_img_p4.png" alt="" class="big_ads sp1" tapmode="tap-active">
 
+              </div>
+              <img src="../../image/index_img_p4.png" alt="" class="big_ads sp1" tapmode="tap-active" onclick="openCommon('broadcast','喵一眼')">
+
+              <!-- <div class="venue sp1_3" tapmode="tap-active">
+                  <span class="title">建材会场</span>
+                  <span class="brief">3年质保</span>
+                  <img src="../../image/index_img_p1.png" alt="">
+              </div>
+              <div class="venue sp1_3" tapmode="tap-active">
+                  <span class="title">居家会场</span>
+                  <span class="brief">我的梦想家</span>
+                  <img src="../../image/index_img_p2.png" alt="">
+              </div>
+              <div class="venue sp1_3" tapmode="tap-active">
+                  <span class="title">喵鲜生</span>
+                  <span class="brief">双11生鲜抄底</span>
+                  <img src="../../image/index_img_p3.png" alt="">
+              </div> -->
                 <!-- 更多惊喜 -->
-                <div class="more clearfix" style="margin-bottom:20px;">
+                <div class="more more-group clearfix" style="margin-bottom:20px;">
                     <div class="sp1 reload_header">
                         <span class="title">行业精选</span>
                         <span class="reload" tapmode="tap-active" onclick="changeGroup();">
@@ -489,30 +567,83 @@
                             换一组
                         </span>
                     </div>
-                    <div class="more_unit sp1_2" tapmode="tap-active">
-                        <div class="img_box">
-                            <img src="../../image/index_img_m1.png" alt="">
+                    <div class="one-group hidden">
+                        <div class="more_unit sp1_2" tapmode="tap-active" onclick="openCommon('broadcast','键盘')">
+                            <div class="img_box">
+                                <img src="../../image/index_img_m1.png" alt="">
+                            </div>
+                            <span class="price">￥398.0</span>
                         </div>
-                        <span class="price">￥398.0</span>
-                    </div>
-                    <div class="more_unit sp1_2" tapmode="tap-active">
-                        <div class="img_box">
-                            <img src="../../image/index_img_m2.png" alt="">
+                        <div class="more_unit sp1_2" tapmode="tap-active" onclick="openCommon('broadcast','大衣')">
+                            <div class="img_box">
+                                <img src="../../image/index_img_m2.png" alt="">
+                            </div>
+                            <span class="price">￥288.0</span>
                         </div>
-                        <span class="price">￥288.0</span>
-                    </div>
-                    <div class="more_unit sp1_2" tapmode="tap-active">
-                        <div class="img_box">
-                            <img src="../../image/index_img_m3.png" alt="">
+                        <div class="more_unit sp1_2" tapmode="tap-active" onclick="openCommon('broadcast','手套')">
+                            <div class="img_box">
+                                <img src="../../image/index_img_m3.png" alt="">
+                            </div>
+                            <span class="price">￥95.0</span>
                         </div>
-                        <span class="price">￥95.0</span>
-                    </div>
-                    <div class="more_unit sp1_2" tapmode="tap-active">
-                        <div class="img_box">
-                            <img src="../../image/index_img_m4.png" alt="">
+                        <div class="more_unit sp1_2" tapmode="tap-active" onclick="openCommon('broadcast','工具')">
+                            <div class="img_box">
+                                <img src="../../image/index_img_m4.png" alt="">
+                            </div>
+                            <span class="price">￥148.0</span>
                         </div>
-                        <span class="price">￥148.0</span>
+                        <div class="more_unit sp1_2" tapmode="tap-active" onclick="openCommon('broadcast','手套')">
+                            <div class="img_box">
+                                <img src="../../image/fun_follow_f1.png" alt="">
+                            </div>
+                            <span class="price">￥95.0</span>
+                        </div>
+                        <div class="more_unit sp1_2" tapmode="tap-active" onclick="openCommon('broadcast','工具')">
+                            <div class="img_box">
+                                <img src="../../image/featured_big_b1.png" alt="">
+                            </div>
+                            <span class="price">￥148.0</span>
+                        </div>
                     </div>
+                    <div class="one-group">
+                        <div class="more_unit sp1_2" tapmode="tap-active" onclick="openCommon('broadcast','键盘')">
+                            <div class="img_box">
+                                <img src="../../image/fun_topic_pic7.png" alt="">
+                            </div>
+                            <span class="price">￥398.0</span>
+                        </div>
+                        <div class="more_unit sp1_2" tapmode="tap-active" onclick="openCommon('broadcast','大衣')">
+                            <div class="img_box">
+                                <img src="../../image/fun_topic_pic6.png" alt="">
+                            </div>
+                            <span class="price">￥288.0</span>
+                        </div>
+                        <div class="more_unit sp1_2" tapmode="tap-active" onclick="openCommon('broadcast','手套')">
+                            <div class="img_box">
+                                <img src="../../image/fun_topic_pic5.png" alt="">
+                            </div>
+                            <span class="price">￥95.0</span>
+                        </div>
+                        <div class="more_unit sp1_2" tapmode="tap-active" onclick="openCommon('broadcast','工具')">
+                            <div class="img_box">
+                                <img src="../../image/fun_topic_pic2.png" alt="">
+                            </div>
+                            <span class="price">￥148.0</span>
+                        </div>
+                        <div class="more_unit sp1_2" tapmode="tap-active" onclick="openCommon('broadcast','手套')">
+                            <div class="img_box">
+                                <img src="../../image/topic_pics13" alt="">
+                            </div>
+                            <span class="price">￥95.0</span>
+                        </div>
+                        <div class="more_unit sp1_2" tapmode="tap-active" onclick="openCommon('broadcast','工具')">
+                            <div class="img_box">
+                                <img src="../../image/featured_big_b1.png" alt="">
+                            </div>
+                            <span class="price">￥148.0</span>
+                        </div>
+                    </div>
+
                 </div>
                 <!-- 更多惊喜 end -->
                 <!-- <img src="../../image/index_img_p8.png" alt="" class="big_ads last sp1" tapmode="tap-active"> -->
@@ -530,17 +661,35 @@
 
         <div class="homefooter_wrap">
             <ul class="homefooter clearfix" id="homefooter">
-                <li class="list_li  active sp1_4" tapmode="tap-active">
+                <li class="list_li  active " onclick="changeIndexFrame(0);" tapmode="tap-active">
+                    <span class="text ">家居百货</span>
+                </li>
+                <li class="list_li"  tapmode="tap-active" onclick="changeIndexFrame(1);">
                     <span class="text ">家用电器</span>
                 </li>
-                <li class="list_li sp1_4" tapmode="tap-active">
-                    <span class="text ">医疗保健</span>
+                <li class="list_li "  tapmode="tap-active" onclick="changeIndexFrame(2);">
+                    <span class="text">食品酒水</span>
                 </li>
-                <li class="list_li sp1_4" tapmode="tap-active">
-                    <span class="text">数码电子</span>
+                <li class="list_li " tapmode="tap-active" onclick="changeIndexFrame(3);">
+                    <span class="text">服装配饰</span>
                 </li>
-                <li class="list_li sp1_4" tapmode="tap-active">
-                    <span class="text">户外运动</span>
+                <li class="list_li  " tapmode="tap-active"  onclick="changeIndexFrame(4);">
+                    <span class="text ">美妆个护</span>
+                </li>
+                <li class="list_li " tapmode="tap-active" onclick="changeIndexFrame(5);">
+                    <span class="text ">母婴用品</span>
+                </li>
+                <li class="list_li " tapmode="tap-active" onclick="changeIndexFrame(6);">
+                    <span class="text">数码办公</span>
+                </li>
+                <li class="list_li " tapmode="tap-active" onclick="changeIndexFrame(7);">
+                    <span class="text">汽车用品</span>
+                </li>
+                <li class="list_li " tapmode="tap-active" onclick="changeIndexFrame(6);">
+                    <span class="text">精选箱包</span>
+                </li>
+                <li class="list_li " tapmode="tap-active" onclick="changeIndexFrame(7);">
+                    <span class="text">户外用品</span>
                 </li>
                 <li class="list_bar">
                     <div class="list_bar_inner"></div>
@@ -554,7 +703,6 @@
 <script type="text/javascript" src="../../script/zepto.js"></script>
 <script type="text/javascript" src="../../script/swipe.js"></script>
 <script type="text/javascript" src="../../script/common.js"></script>
-:
 <script type="text/javascript" src="../../script/scroll.js"></script>
 <script type="text/javascript">
     apiready = function() {
@@ -650,32 +798,40 @@
                 countDownTime.setMinutes(countDownTime.getMinutes() + 25);
                 countDown(countDownTime);
             });
+            api.addEventListener({
+              name:'swipeup'
+              }, function(ret, err){
+              if( ret ){
+                console.log(JSON.stringify( ret ));
+              }else{
+                console.log(JSON.stringify( err ));
+              }
+            });
 
+        }
+        function changeGroup(){
+              $('.one-group').toggleClass('hidden');
         }
         // apiready();
 </script>
 <script type="text/javascript">
     var aFooterList = $api.domAll('#homefooter .list_li');
     var listBar = $api.dom('#homefooter .list_bar');
-    var frameJson = {
-        '0': 'home',
-        '1': 'featured',
-        '2': 'fun',
-        '3': 'cart',
-        '4': 'zhanghu'
-    };
     var changeIndexFrame = function(index) {
         // header.className = frameJson[index];
-        for (var i = 0; i < 5; i++) {
+        for (var i = 0; i < 8; i++) {
             if (i == index) {
                 $api.addCls(aFooterList[index], 'active');
             } else {
                 $api.removeCls(aFooterList[i], 'active');
             }
         };
-        listBar.style.webkitTransform = 'translateX(' + index * 100 + '%)';
-        openIndexFrames(index);
+        listBar.style.webkitTransform = 'translateX(' + index * 80+'px)';
+        // openIndexFrames(index);
     };
+
+
+
 </script>
 
 </html>
